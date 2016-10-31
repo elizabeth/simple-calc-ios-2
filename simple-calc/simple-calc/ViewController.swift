@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var equation: UITextView!
-    @IBOutlet weak var calculated: UITextView!
+    @IBOutlet weak var calculated: UILabel!
     @IBOutlet weak var rpnButton: UIButton!
     var num = ""
     var calculatedNum = 0.0
