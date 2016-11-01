@@ -15,7 +15,6 @@ class HistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(data)
         for index in 0..<data.count {
             let item = UILabel(frame: CGRect(x: 0, y: index * 30, width: Int(list.bounds.size.width), height: 31))
             item.textAlignment = .right

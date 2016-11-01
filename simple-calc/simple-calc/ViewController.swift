@@ -79,15 +79,22 @@ class ViewController: UIViewController {
     
     
     @IBAction func operation(_ sender: AnyObject) {
-    
         let op = (sender.titleLabel!?.text)!
         
         if rpn {
             mathOp = op
             calculate()
         } else {
+            if (num == "") {
+                current.append("\(calculatedNum) ")
+            }
+            
             if (mathOp == "" && num != "") {
                 calculatedNum = Double(num)!
+                current.append("\(calculatedNum) ")
+            }
+            
+            if (mathOp != "" && num != "") {
                 calculate()
             }
             
@@ -123,6 +130,9 @@ class ViewController: UIViewController {
                     }
                     
                     calculatedNum = Double(result)
+                    current = ("\(factNum!) \(op) = \(calculatedNum)")
+                    history.append(current)
+                    current = String(calculatedNum)
                 }
                 displayResult()
             }
@@ -135,18 +145,21 @@ class ViewController: UIViewController {
                         num = String(calculatedNum)
                     }
                     
+                    current.append("\(Double(num)!) \(mathOp) ")
+                    
                     numArray.append(Double(num)!)
                     calculatedNum = Double(num)!
-                    current.append(" \(Double(num)!) \(mathOp)")
                     displayResult()
                 case "avg":
                     mathOp = "avg"
                     if (num == "") {
                         num = String(calculatedNum)
                     }
+                    
+                    current.append("\(Double(num)!) \(mathOp) ")
+                    
                     numArray.append(Double(num)!)
                     calculatedNum = Double(num)!
-                    current.append(" \(Double(num)!) \(mathOp)")
                     displayResult()
                 case "fact":
                     if (num != "") {
@@ -167,16 +180,18 @@ class ViewController: UIViewController {
                             temp = temp - 1
                         }
                         calculatedNum = Double(result)
-                        current.append("factNum! \(op) = \(calculatedNum)")
+                        current = ("\(factNum!) \(op) = \(calculatedNum)")
+                        history.append(current)
+                        current = String(calculatedNum)
                     }
                 default:
                     calculatedNum = Double.nan
-                    current.append(" \(calculatedNum)")
+                    current.append("\(calculatedNum) ")
                     break
                 }
             } else {
                 calculatedNum = Double.nan
-                current.append(" \(calculatedNum)")
+                current.append("\(calculatedNum) ")
             }
             displayResult()
         }
@@ -186,17 +201,23 @@ class ViewController: UIViewController {
         if rpn {
             if num != "" {
                 numArray.append(Double(num)!)
+                current += "\(Double(num)!) "
             }
             
             switch mathOp {
             case "+":
                 let count = numArray.count
+                if count == 0 {
+                    current = "\(calculatedNum) "
+                }
+                
                 if count > 0 && count != 1{
                     calculatedNum = numArray[0]
                 }
                 
                 if count == 1 {
                     calculatedNum = calculatedNum + numArray[0]
+                    current = "\(calculatedNum) "
                 }
                 
                 if count > 1 {
@@ -204,14 +225,21 @@ class ViewController: UIViewController {
                         calculatedNum += numArray[i]
                     }
                 }
+                
+                current += "+ = \(calculatedNum)"
             case "-":
                 let count = numArray.count
+                if count == 0 {
+                    current = "\(calculatedNum) "
+                }
+            
                 if count > 0 && count != 1{
                     calculatedNum = numArray[0]
                 }
                 
                 if count == 1 {
                     calculatedNum = calculatedNum - numArray[0]
+                    current = "\(calculatedNum) "
                 }
                 
                 if count > 1 {
@@ -219,48 +247,79 @@ class ViewController: UIViewController {
                         calculatedNum -= numArray[i]
                     }
                 }
+                
+                current += "- = \(calculatedNum)"
             case "×":
                 let count = numArray.count
+                if count == 0 {
+                    current = "\(calculatedNum) "
+                }
+                
                 if count > 0 {
                     calculatedNum = numArray[0]
                 }
                 
                 if count == 1 {
                     calculatedNum = calculatedNum * numArray[0]
+                    current = "\(calculatedNum) "
                 }
                 
                 for i in 1..<count {
                     calculatedNum = calculatedNum * numArray[i]
                 }
+                
+                current += "× = \(calculatedNum)"
             case "÷":
                 let count = numArray.count
+                if count == 0 {
+                    current = "\(calculatedNum) "
+                }
+                
                 if count > 0 {
                     calculatedNum = numArray[0]
                 }
+                
+                if count == 1 {
+                    calculatedNum = calculatedNum + numArray[0]
+                    current = "\(calculatedNum) "
+                }
+                
+                
                 if count > 1 {
                     for i in 1..<count {
                         calculatedNum = calculatedNum / numArray[i]
                     }
                 }
+                
+                current += "÷ = \(calculatedNum)"
             case "%":
                 let count = numArray.count
+                if count == 0 {
+                    current = "\(calculatedNum) "
+                }
+                
                 if count > 0 {
                     calculatedNum = numArray[0]
                 }
                 
                 if count == 1 {
                     calculatedNum = calculatedNum / numArray[0]
+                    current = "\(calculatedNum) "
                 }
                 
                 for i in 1..<count {
                     calculatedNum = calculatedNum.truncatingRemainder(dividingBy: numArray[i])
                 }
+                
+                current += "% = \(calculatedNum)"
             case "count":
                 calculatedNum = Double(numArray.count)
+                current += "count = \(calculatedNum)"
             case "avg":
                 if (numArray.count > 0) {
                     calculatedNum = (numArray.reduce(0, +)) / Double(numArray.count)
                 }
+                current += "avg = \(calculatedNum)"
             default:
                 calculatedNum = Double.nan
             }
@@ -268,35 +327,39 @@ class ViewController: UIViewController {
             numArray.removeAll()
             if !calculatedNum.isNaN {
                 numArray.append(calculatedNum)
+                history.append(current)
+                current = "\(calculatedNum) "
             }
         } else {
             switch mathOp {
             case "+":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(mathOp) \(Double(num)!) ")
                 calculatedNum += Double(num)!
             case "-":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(mathOp) \(Double(num)!) ")
                 calculatedNum -= Double(num)!
             case "×":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(mathOp) \(Double(num)!) ")
                 calculatedNum = calculatedNum * Double(num)!
             case "÷":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(mathOp) \(Double(num)!) ")
                 calculatedNum = calculatedNum / Double(num)!
             case "%":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(mathOp) \(Double(num)!) ")
                 calculatedNum = calculatedNum.truncatingRemainder(dividingBy: Double(num)!)
             case "count":
-                current.append(" \(mathOp) \(Double(num)!)")
+                current.append("\(Double(num)!) \(mathOp) ")
                 numArray.append(Double(num)!)
                 calculatedNum = Double(numArray.count)
                 numArray.removeAll()
             case "avg":
+                current.append("\(Double(num)!) \(mathOp)")
                 numArray.append(Double(num)!)
                 calculatedNum = (numArray.reduce(0, +)) / Double(numArray.count)
                 numArray.removeAll()
             default:
                 calculatedNum = Double(num)!
+                current = "\(calculatedNum) "
             }
         }
         
@@ -309,25 +372,27 @@ class ViewController: UIViewController {
             if (num != "") {
                 calculatedNum = Double(num)!
                 numArray.append(Double(num)!)
-                history.append(" \(current) \(calculated)")
+                current.append("\(calculatedNum) ")
                 displayResult()
             }
         } else {
             if (num != "") {
                 calculate()
+                history.append("\(current)= \(calculatedNum)")
             } else if (mathOp == "count") {
                 calculatedNum = Double(numArray.count)
-                history.append(" \(current) = \(calculatedNum)")
+                history.append("\(current)= \(calculatedNum)")
                 mathOp = ""
                 numArray.removeAll()
                 displayResult()
             } else if (mathOp == "avg") {
                 calculatedNum = (numArray.reduce(0, +)) / Double(numArray.count)
-                history.append(" \(current) = \(calculatedNum)")
+                history.append("\(current)= \(calculatedNum)")
                 mathOp = ""
                 numArray.removeAll()
                 displayResult()
             }
+            current = ""
         }
     }
     
