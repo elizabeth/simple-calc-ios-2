@@ -236,12 +236,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-mY-CRM">
-                                <frame key="frameInset" minX="4.27%" minY="7.50%" width="91.47%" height="11.69%"/>
+                                <frame key="frameInset" minX="4.27%" minY="12.29%" width="91.47%" height="11.69%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -258,7 +258,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTL-7g-IcH">
-                                <frame key="frameInset" minX="50.13%" minY="25.34%" width="24.27%" height="11.99%"/>
+                                <frame key="frameInset" minX="50.40%" minY="25.34%" width="24.00%" height="11.99%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.85067731142044067" green="0.85890895128250122" blue="0.85881227254867554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -284,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="-98.400000000000006" y="123.68815592203899"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="g2g-CW-cRe">
             <objects>
-                <viewController id="jMt-VX-o4f" sceneMemberID="viewController">
+                <viewController id="jMt-VX-o4f" customClass="HistoryViewController" customModule="simple_calc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gzr-Cc-3kZ"/>
                         <viewControllerLayoutGuide type="bottom" id="6Cy-4x-l2T"/>
@@ -303,9 +303,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-Vd-DO0">
                                 <frame key="frameInset" minX="1.87%" minY="4.20%" width="32.27%" height="4.50%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.85067731142044067" green="0.85890895128250122" blue="0.85881227254867554" alpha="0.59020136443661975" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="CALCULATOR">
-                                    <color key="titleColor" red="0.97916666666666663" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="XcU-Tj-zjM"/>
@@ -314,6 +315,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.45071721076965332" green="0.45888501405715942" blue="0.45885699987411499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="list" destination="4xM-Jz-JiS" id="0W6-NZ-YJt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsQ-5f-NI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
