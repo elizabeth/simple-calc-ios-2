@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var mathOp = ""
     var rpn = false
     var rpnNum = [Double]()
+    var history = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -289,20 +290,24 @@ class ViewController: UIViewController {
             if (num != "") {
                 calculatedNum = Double(num)!
                 numArray.append(Double(num)!)
+                history.append(calculatedNum)
                 displayResult()
             }
         } else {
             if (num != "") {
+                history.append(calculatedNum)
                 calculate()
             } else if (mathOp == "count") {
                 calculatedNum = Double(numArray.count)
                 mathOp = ""
                 numArray.removeAll()
+                history.append(calculatedNum)
                 displayResult()
             } else if (mathOp == "avg") {
                 calculatedNum = (numArray.reduce(0, +)) / Double(numArray.count)
                 mathOp = ""
                 numArray.removeAll()
+                history.append(calculatedNum)
                 displayResult()
             }
         }
