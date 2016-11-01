@@ -66,11 +66,13 @@ class ViewController: UIViewController {
         if rpn {
             if calculatedNum != 0.0 {
                 numArray.append(calculatedNum)
+                current = "\(calculatedNum) "
             }
             
             rpnButton.backgroundColor = UIColor(red: (236/255.0), green: (126/255.0), blue: (189/255.0), alpha: 1.0)
             rpnButton.setTitleColor(UIColor.white, for: .normal)
         } else {
+            current = ""
             rpnButton.backgroundColor = UIColor(red: (190/255.0), green: (191/255.0), blue: (193/255.0), alpha: 1.0)
             rpnButton.setTitleColor(self.view.tintColor, for: .normal)
             numArray.removeAll()
@@ -378,7 +380,9 @@ class ViewController: UIViewController {
         } else {
             if (num != "") {
                 calculate()
-                history.append("\(current)= \(calculatedNum)")
+                if current != "" {
+                    history.append("\(current)= \(calculatedNum)")
+                }
             } else if (mathOp == "count") {
                 calculatedNum = Double(numArray.count)
                 history.append("\(current)= \(calculatedNum)")
