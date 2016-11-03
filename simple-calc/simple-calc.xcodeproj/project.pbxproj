@@ -13,8 +13,6 @@
 		9D9542021DBAB0B7001DE30D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9542001DBAB0B7001DE30D /* Main.storyboard */; };
 		9D9542041DBAB0B7001DE30D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9542031DBAB0B7001DE30D /* Assets.xcassets */; };
 		9D9542071DBAB0B7001DE30D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9542051DBAB0B7001DE30D /* LaunchScreen.storyboard */; };
-		9D9542121DBAB0B7001DE30D /* simple_calcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9542111DBAB0B7001DE30D /* simple_calcTests.swift */; };
-		9D95421D1DBAB0B7001DE30D /* simple_calcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95421C1DBAB0B7001DE30D /* simple_calcUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +42,7 @@
 		9D9542061DBAB0B7001DE30D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D9542081DBAB0B7001DE30D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D95420D1DBAB0B7001DE30D /* simple-calcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "simple-calcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D9542111DBAB0B7001DE30D /* simple_calcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simple_calcTests.swift; sourceTree = "<group>"; };
-		9D9542131DBAB0B7001DE30D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9542181DBAB0B7001DE30D /* simple-calcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "simple-calcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D95421C1DBAB0B7001DE30D /* simple_calcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simple_calcUITests.swift; sourceTree = "<group>"; };
-		9D95421E1DBAB0B7001DE30D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				9D9541FB1DBAB0B7001DE30D /* simple-calc */,
-				9D9542101DBAB0B7001DE30D /* simple-calcTests */,
-				9D95421B1DBAB0B7001DE30D /* simple-calcUITests */,
 				9D9541FA1DBAB0B7001DE30D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,24 +100,6 @@
 				9D9542081DBAB0B7001DE30D /* Info.plist */,
 			);
 			path = "simple-calc";
-			sourceTree = "<group>";
-		};
-		9D9542101DBAB0B7001DE30D /* simple-calcTests */ = {
-			isa = PBXGroup;
-			children = (
-				9D9542111DBAB0B7001DE30D /* simple_calcTests.swift */,
-				9D9542131DBAB0B7001DE30D /* Info.plist */,
-			);
-			path = "simple-calcTests";
-			sourceTree = "<group>";
-		};
-		9D95421B1DBAB0B7001DE30D /* simple-calcUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9D95421C1DBAB0B7001DE30D /* simple_calcUITests.swift */,
-				9D95421E1DBAB0B7001DE30D /* Info.plist */,
-			);
-			path = "simple-calcUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +247,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D9542121DBAB0B7001DE30D /* simple_calcTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D95421D1DBAB0B7001DE30D /* simple_calcUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
